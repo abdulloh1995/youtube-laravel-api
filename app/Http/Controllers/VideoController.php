@@ -9,11 +9,11 @@ class VideoController extends Controller
 {
     public function index() 
     {
-        return Video::get();
+        return Video::with('channel', 'categories')->get();
     }
 
     public function show(Video $video)
     {
-        return $video;
+        return $video->load('channel', 'categories');
     }
 }

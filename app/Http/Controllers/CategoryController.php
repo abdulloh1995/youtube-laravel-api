@@ -10,12 +10,12 @@ class CategoryController extends Controller
 {
     public function index() 
     {
-        return Category::get();
+        return Category::with('videos')->get();
         // return DB::table('categories')->get();
     }
 
     public function show(Category $category) 
     {
-        return $category;
+        return $category->load('videos');
     }
 }
